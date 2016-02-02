@@ -11,6 +11,7 @@ use Thruway\Event\ConnectionOpenEvent;
 use Thruway\Event\RouterStartEvent;
 use Thruway\Event\RouterStopEvent;
 use Thruway\Logging\Logger;
+use Thruway\Message\HelloMessage;
 use Thruway\Session;
 
 class RxWebsocketTransportProvider extends AbstractRouterTransportProvider
@@ -46,6 +47,14 @@ class RxWebsocketTransportProvider extends AbstractRouterTransportProvider
         $ms->subscribe(new CallbackObserver(
             function ($message) use ($transport, $session) {
                 $thruwayMessage = $transport->getSerializer()->deserialize($message);
+
+                if ($thruwayMessage instanceof HelloMessage) {
+                    $details = $thruwayMessage->getDetails();
+
+                    $details->transport = (object) $session->getTransport()->getTransportDetails();
+
+                    $thruwayMessage->setDetails($details);
+                }
 
                 $session->dispatchMessage($thruwayMessage);
             },

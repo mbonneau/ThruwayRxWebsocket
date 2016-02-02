@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "rx/websocket": "dev-master",
-        "voryx/thruway": "dev-master"
+        "rx/websocket": "^0.9.1",
+        "voryx/thruway": "^0.4.2"
     }
 }

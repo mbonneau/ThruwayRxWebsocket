@@ -1,0 +1,30 @@
+{
+    "name": "mbonneau/thruway-rxwebsocket",
+    "type": "library",
+    "description": "Rx Websocket Transport for Thruway",
+    "keywords": [
+        "WebSockets",
+        "Thruway",
+        "rx",
+        "rxphp"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Bonneau", "email": "matt@bonneau.net", "role": "Developer"
+        },
+
+        {
+            "name": "David Dan", "email": "davidwdan@gmail.com", "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Thruway\\Transport\\": "src/"
+        }
+    },
+    "require": {
+        "rx/websocket": "dev-master",
+        "voryx/thruway": "dev-master"
+    }
+}

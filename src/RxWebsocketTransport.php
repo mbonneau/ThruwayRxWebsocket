@@ -51,4 +51,9 @@ class RxWebsocketTransport extends AbstractTransport
             "cookies"          => $cookies,
         ];
     }
+
+    public function close()
+    {
+        $this->ms->onCompleted();
+    }
 }
